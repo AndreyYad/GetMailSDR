@@ -41,6 +41,7 @@ async def delete_email_func(msg: types.Message):
         await reply_msg(msg, Text.email_is_none)
 
 async def register_generic_handlers():
+    router.message.register(lambda msg: print(msg.chat.id), Command('id'))
     router.message.register(lambda msg: None, ~((F.chat.type == 'private') & (F.content_type == 'text')))
     router.message.register(start_func, CommandStart())
     router.message.register(get_saved_email_func, Command('my_email'))
