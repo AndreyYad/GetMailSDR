@@ -20,5 +20,7 @@ async def delete_msg(chat_id: int, msg_id: int):
     '''Удаление сообщения'''
     await bot.delete_message(chat_id, msg_id)
 
-async def check_membering(user_id: int):
+async def check_membering(user_id: int, debug: bool=False):
+    if debug:
+        print(await bot.get_chat_member(CHAT_ID, user_id))
     return (await bot.get_chat_member(CHAT_ID, user_id)).status._value_ not in ['left', 'kicked']
