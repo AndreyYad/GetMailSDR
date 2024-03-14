@@ -1,5 +1,6 @@
 from aiogram import Router, types, F
 from aiogram.filters import CommandStart, Command
+from re import fullmatch
 
 from modules.text import Text
 from modules.bot_commands import send_msg, reply_msg, check_membering
@@ -20,6 +21,9 @@ async def start_func(msg: types.Message):
     # pp.pprint(msg.__dict__)
 
 async def save_email_func(msg: types.Message):
+    if not fullmatch(r'[A-Za-z0-9._%+-]+@proton(\.me|mail\.com)', msg.text):
+        await reply_msg(msg, Text.not_correсt_email)
+        return
     if not await check_membering(msg.from_user.id):
         await reply_msg(msg, Text.not_chat_member)
         return
