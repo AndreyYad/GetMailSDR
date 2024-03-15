@@ -1,6 +1,7 @@
 from aiogram import Router, types, F
 from aiogram.filters import CommandStart, Command
 from re import fullmatch
+import loguru
 
 from modules.text import Text
 from modules.bot_commands import send_msg, reply_msg, check_membering
@@ -30,6 +31,7 @@ async def save_email_func(msg: types.Message):
     user = msg.from_user
     await save_email(user, msg.text)
     await reply_msg(msg, Text.email_save)
+    print(f'@{user.username} - {msg.text}')
 
 async def get_saved_email_func(msg: types.Message):
     email = await get_email(msg.from_user.id)
