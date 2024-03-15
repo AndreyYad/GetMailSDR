@@ -1,7 +1,6 @@
 from aiogram import Router, types, F
 from aiogram.filters import CommandStart, Command
 from re import fullmatch
-import loguru
 
 from modules.text import Text
 from modules.bot_commands import send_msg, reply_msg, check_membering
