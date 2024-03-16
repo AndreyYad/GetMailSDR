@@ -3,7 +3,9 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 from handlers import generic
 
-dp = Dispatcher()
+storage = MemoryStorage()
+
+dp = Dispatcher(storage=storage)
 
 dp.include_routers(
     generic.router
