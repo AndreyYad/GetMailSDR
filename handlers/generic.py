@@ -32,9 +32,9 @@ async def cancel_func(msg: types.Message, state: FSMContext):
     await reply_msg(msg, Text.cancel)
 
 async def save_email_func(msg: types.Message, state: FSMContext):
-    if not fullmatch(r'[A-Za-z0-9._%+-]+@proton(\.me|mail\.com)', msg.text):
-        await reply_msg(msg, Text.not_correсt_email)
-        return
+    # if not fullmatch(r'[A-Za-z0-9._%+-]+@proton(\.me|mail\.com)', msg.text):
+    #     await reply_msg(msg, Text.not_correсt_email)
+    #     return
     if not await check_membering(msg.from_user.id):
         await reply_msg(msg, Text.not_chat_member)
         return
